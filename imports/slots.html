@@ -1,0 +1,32 @@
+
+<template>
+    <style>
+        :host(.active) { /*HOST SELECTOR WITH CLASS active*/
+            color: green;
+        }
+        :host(.blue) {
+            color: blue;
+        }
+    </style>
+    <ul id='contacts'>
+        <li>
+            <slot name='title'>Kein Titel</slot> <!--SLOT ELEMENT-->
+            <slot name='name'> <!--SLOT ELEMENT WITH PLACEHOLDER-->
+                <p>Achtung<p>
+                <h1>Kein Name</h1>
+            </slot>
+        </li>
+    </ul>
+</template>
+<script>
+    class ExampleSlot extends HTMLElement { /*CUSTOM ELEMENT*/
+        constructor() {
+            super();
+            var template = document.currentScript.ownerDocument.querySelector('template');
+            var clone = document.importNode(template.content, true);
+            this.createShadowRoot().appendChild(clone);
+        }
+    }
+    customElements.define('example-slot', ExampleSlot);
+</script>
+

@@ -1,0 +1,35 @@
+<dom-module id='my-element'>
+    <style>
+        .title {
+            /*USER DEFINED VARIABLE*/
+            color: var(--my-element-title-color);
+        }
+        .smalltext {
+            color: var(--my-element-smalltext-color, blue);
+        }
+    </style>
+    <template>
+        <div class="title">
+            Title
+        </div>
+        <div class="smalltext">smalltext</div>
+        I am my-element!
+    </template>
+    <script>
+    Polymer({
+        is: 'my-element', //NAME OF ELEMENT
+        properties: {  //PROPERTIES OF ELEMENT
+            user: String, //PROPERTY WITH DATA TYPE
+            isHappy: Boolean,
+            count: {
+                type: Array,
+                value: function() { return {}; }
+            }
+        },
+        speak: function(){  //METHOD OF ELEMENT
+            console.log('speak');
+        }
+
+    });
+    </script>
+</dom-module>

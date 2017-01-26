@@ -1,0 +1,17 @@
+<dom-module id='my-element-outer'>
+    <style>
+        :host { /*SETS USER DEFINED VARIABLES*/
+            --my-element-title-color: orange;
+            --my-element-smalltext-color: yellow;
+        }
+    </style>
+    <template>
+        I am the outer my-element-outer!
+        <my-element></my-element>
+    </template>
+    <script>
+    Polymer({
+        is: 'my-element-outer'
+    });
+    </script>
+</dom-module>

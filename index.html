@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Adaptive Web Components</title>
+
+    <!--POLYMER-->
+    <link rel="import" href="polymer/polymer.html">
+
+    <!--IMPORTS-->
+    <link rel="import" href="imports/example-component.html">
+    <link rel='import' class="import" href='imports/imported-document.html'>
+    <link rel='import' class="slot" href='imports/slots.html'>
+    <link rel='import'  href='imports/polymer-component.html'>
+    <link rel='import'  href='imports/polymer-component-outer.html'>
+</head>
+
+<body>
+   <p>
+      Normaler Inhalt der Internetseite.
+   </p>
+   <!-- CUSTOM ELEMENT TECHNOLOGY-->
+   <example-component></example-component>
+   <template>
+    Empty. <br>
+   </template>
+   <!--SLOT TECHNOLOGY-->
+   <example-slot class="active"></example-slot>
+   <my-element></my-element>
+   <my-element-outer></my-element-outer>
+</body>
+<script>
+/*IMPORT TECHNOLOGY*/
+var link = document.querySelector('link[rel=import].import');
+var importedDocument = link.import;
+var elem = importedDocument.querySelector('div.element');
+console.log(elem);
+
+/*TEMPLATE TECHNOLOGY*/
+var inhalt = document.querySelector('template').content;
+document.querySelector('body').appendChild(inhalt);
+
+/*SHADOW DOM TECHNOLOY*/
+var header = document.createElement('header');
+var shadowRoot = header.attachShadow({mode: 'open'});
+var headline = document.createElement('h1');
+var headlineText = document.createTextNode('headline');
+headline.appendChild(headlineText);
+shadowRoot.appendChild(headline);
+document.querySelector('body').appendChild(header);
+
+/*POLYMER METHODS*/
+var polymerComp = document.querySelector('my-element');
+polymerComp.speak();
+
+</script>
+</html>

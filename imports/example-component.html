@@ -1,0 +1,20 @@
+<template>
+    <style>
+        p {
+            color: red;
+        }
+    </style>
+    <p>Dies ist ein Web Component.</p>
+</template>
+<script>
+class Example extends HTMLElement { /*CUSTOM ELEMENT*/
+    constructor() {
+        super();
+        var template = document.currentScript.ownerDocument.querySelector('template');
+        var clone = document.importNode(template.content, true);
+        this.createShadowRoot().appendChild(clone);
+    }
+}
+customElements.define('example-component', Example);
+</script>
+
